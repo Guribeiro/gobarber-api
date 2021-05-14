@@ -1,0 +1,37 @@
+import { container } from 'tsyringe';
+import { Request, Response } from 'express';
+import { classToClass } from 'class-transformer';
+
+import ShowProfileService from '../../../services/ShowProfileService';
+import UpdateProfileService from '../../../services/UpdateProfileService';
+
+export default class ProfileController {
+  public async show(request: Request, response: Response): Promise<Response> {
+    const { id } = request.user;
+
+    const showProfile = container.resolve(ShowProfileService);
+
+    const user = await showProfile.execute({
+      id,
+    });
+
+    return response.json(classToClass(user));
+  }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    const { id } = request.user;
+    const { name, email, password, old_password } = request.body;
+
+    const updateProfile = container.resolve(UpdateProfileService);
+
+    const user = await updateProfile.execute({
+      user_id: id,
+      name,
+      email,
+      old_password,
+      password,
+    });
+
+    return response.json(classToClass(user));
+  }
+}
