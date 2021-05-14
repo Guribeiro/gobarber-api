@@ -87,79 +87,116 @@ Import the `Insomnia.json` on Insomnia App or click on [Run in Insomnia](#insomn
 $ git clone https://github.com/guribeiro/gobarber-api.git && cd gobarber-api
 ```
 
-**Follow the steps below**
+### **Follow the steps below**
+
+<div>
+  <p>Install the dependencies</p>
+</div>
 
 ``` bash
-# Install the dependencies
 $ yarn
 ```
+or
+``` bash
+$ yarn install
+```
+
+<div>
+  <p>Make a copy of '.env.example' to '.env'</p>
+  <p>and set with YOUR environment variables.</p>
+  <p>The aws variables do not need to be filled for dev environment</p>
+</div>
 
 ``` bash
-# Make a copy of '.env.example' to '.env'
-# and set with YOUR environment variables.
-# The aws variables do not need to be filled for dev environment
 $ cp .env.example .env
 ```
+<div>
+  <p>Create the instance of postgreSQL using docker</p>
+  <p>I'm using port 5433, you can see it in the ormconfig.json file, feel free to use any port you prefer</p>
+  <p>I recommend you to use the same port as i'm using, if you just don't remember to change it in the command below</p>
+  <p>Remember to change the port in the ormconfig.json file if you don't want to get any errors</p>
+</div>
+
 ``` bash
-# Create the instance of postgreSQL using docker
-# I'm using port 5433, you can see it in the ormconfig.json file, feel free to use any port you prefer
-# I recommend you to use the same port as i'm using, if you just don't remember to change it in the command below
-# Remember to change the port in the ormconfig.json file if you don't want to get any errors
 $ docker run --name softwrap-postgres -e POSTGRES_USER=docker \
               -e POSTGRES_DB=softwrap -e POSTGRES_PASSWORD=docker \
               -p 5433:5432 -d postgres
 ```
+<div>
+  <p>Create the instance of mongoDB using docker</p>
+</div>
+
 ``` bash
-# Create the instance of mongoDB using docker
 $ docker run --name gobarber-mongodb -p 27017:27017 -d -t mongo
 ```
+
+<div>
+  <p>Create the instance of redis using docker</p>
+</div>
+
 ``` bash
-# Create the instance of redis using docker
 $ docker run --name gobarber-redis -p 6379:6379 -d -t redis:alpine
 ```
+
+<div>
+  <p>Once the services are running, run the migrations</p>
+</div>
+
 ``` bash
-# Once the services are running, run the migrations
 $ yarn typeorm migration:run
 ```
+<div>
+  <p>To finish, run the api service</p>
+</div>
 
 ``` bash
-# To finish, run the api service
 $ yarn dev:server
-
-# Well done, project is started!
 ```
+ <p>Well done, project is started!</p>
+
 <hr/>
 
 ## 🤔 How to contribute
 
-**Make a fork of this repository**
+### **Make a fork of this repository**
+
+<div>
+  <p>Fork using GitHub official command line</p>
+  <p>If you don't have the GitHub CLI, use the web site to do that.</p>
+</div>
 
 ``` bash
-# Fork using GitHub official command line
-# If you don't have the GitHub CLI, use the web site to do that.
-
 $ gh repo fork guribeiro/gobarber-api
 ```
 
 **Follow the steps below**
 
+<div>
+  <p>Clone your fork</p>
+</div>
+
 ```bash
-# Clone your fork
 $ git clone your-fork-url && cd gobarber-api
 ```
+<div>
+  <p>Create a branch with your feature</p>
+</div>
 
 ```bash
-# Create a branch with your feature
 $ git checkout -b my-feature
 ```
+<div>
+  <p>Make the commit with your changes</p>
+</div>
 
 ```bash
-# Make the commit with your changes
 $ git commit -m 'feat: My new feature'
 ```
+<div>
+  <p>Send the code to your remote branch</p>
+</div>
 
 ``` bash
-# Send the code to your remote branch
 $ git push origin my-feature
 ```
 
