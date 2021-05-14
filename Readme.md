@@ -102,9 +102,12 @@ $ cp .env.example .env
 ```
 ``` bash
 # Create the instance of postgreSQL using docker
-$ docker run --name gobarber-postgres -e POSTGRES_USER=docker \
-              -e POSTGRES_DB=gobarber -e POSTGRES_PASSWORD=docker \
-              -p 5432:5432 -d postgres
+# I'm using port 5433, you can see it in the ormconfig.json file, feel free to use any port you prefer
+# I recommend you to use the same port as i'm using, if you just don't remember to change it in the command below
+# Remember to change the port in the ormconfig.json file if you don't want to get any errors
+$ docker run --name softwrap-postgres -e POSTGRES_USER=docker \
+              -e POSTGRES_DB=softwrap -e POSTGRES_PASSWORD=docker \
+              -p 5433:5432 -d postgres
 ```
 ``` bash
 # Create the instance of mongoDB using docker
