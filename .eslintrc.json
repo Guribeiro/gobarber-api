@@ -1,7 +1,8 @@
 {
     "env": {
         "es6": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
     "extends": [
         "airbnb-base",
@@ -23,7 +24,15 @@
         "prettier"
     ],
     "rules": {
+      "no-unused-expressions":"off",
+      "@typescript-eslint/no-var-requires":"off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-explicit-any":"off",
+      "import/no-extraneous-dependencies":"off",
+      "class-methods-use-this":"off",
+      "camelcase":"off",
       "prettier/prettier": "error",
+      "no-useless-constructor":"off",
       "import/extensions": [
         "error",
         "ignorePackages",
@@ -31,7 +40,10 @@
           "ts": "never"
         }
       ],
-      "no-console":"off"
+      "no-console":"off",
+      "@typescript-eslint/no-unused-vars":["error", {
+        "argsIgnorePattern":"_"
+      }]
 
     },
     "settings": {

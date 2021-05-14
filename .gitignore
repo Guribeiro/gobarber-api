@@ -1,2 +1,13 @@
-node_modules
-.vscode
+.idea/
+yarn-error.log
+yarn.lock
+.vscode/
+node_modules/
+build/
+tmp/*
+!tmp/.gitkeep
+.env
+
+ormconfig.json
+
+/coverage
